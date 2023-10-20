@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 10:54:09 by jmorvan           #+#    #+#             */
-/*   Updated: 2023/10/20 11:58:21 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:48:27 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ int		perror_msg(char *str, int error);
 int		get_env_var_l(t_shell *shell, int *i, int quote);
 
 int		parsing(t_shell *shell);
-t_pipe	*add_cell(t_pipe *list, char *cmd, int pos);
-t_pipe *init_cell(char *line);
-void	print_list(t_pipe *list);
+t_token	*add_cell(t_token *list, char *cmd, int pos);
+t_token *init_cell(char *line);
+void	print_list(t_token *list);
 
 #endif

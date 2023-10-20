@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:14:25 by jmorvan           #+#    #+#             */
-/*   Updated: 2023/10/20 12:02:12 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:49:09 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 	check for unclosed double and simpe quote
 */
+
 int	check_quote(t_shell *shell)
 {
 	int		i;
@@ -37,15 +38,10 @@ int	check_quote(t_shell *shell)
 	return (0);
 }
 
-int sep_cmd(t_pipe *list)
-{
-	
-}
-
 int	parsing(t_shell *shell)
 {
 	char		**str;
-	t_pipe	*list;
+	t_token		*list;
 	int 		i;
 
 	if (check_quote(shell))
@@ -58,16 +54,15 @@ int	parsing(t_shell *shell)
 		list = add_cell(list, str[i], i);
 		i++;
 	}
-	sep_cmd(list);
 	print_list(list); //a enlever
 	return (0);
 }
 
-t_pipe	*add_cell(t_pipe *list, char *cmd, int pos)
+t_token	*add_cell(t_token *list, char *cmd, int pos)
 {
-  t_pipe	*prec;
-  t_pipe	*cur;
-  t_pipe	*cell;
+  t_token	*prec;
+  t_token	*cur;
+  t_token	*cell;
   int		i;
 
   cur = list;
@@ -79,14 +74,14 @@ t_pipe	*add_cell(t_pipe *list, char *cmd, int pos)
   {
   	i++;
   	prec = cur;
-  	cur = cur->next;
+  	cur = cur->down;
   }
-  prec->next = cell;
-  cell->next = cur;
+  prec->down = cell;
+  cell->down = cur;
   return (list);
 }
 
-void	print_list(t_pipe *list)
+void	print_list(t_token *list)
 {
   int		i;
 
@@ -96,20 +91,9 @@ void	print_list(t_pipe *list)
 	if (i != 0)
   		printf("-----------------------------------\n");
   	printf("i = %d                            \n", i);
-  	printf("list->cmd : %s            \n", list->cmd);
-  	list = list->next;
+  	printf("list->cmd : %s            \n", list->arg[0]);
+  	list = list->down;
   	i++;
   }
 }
 
-/*
-mettre dans un char** chaque commande
-arg[0] = echo
-arg[1] = -n
-arg[2] = bonjour 
-
-|
-
-char **
-arg[0] = pwd
-*/
