@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 17:10:55 by aniezgod          #+#    #+#             */
-/*   Updated: 2023/10/18 18:13:45 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:58:58 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_pipe *init_cell(char *line)
 	cell->prev = NULL;
 	cell->next = NULL;
 	cell->cmd = line;
+	cell->cmdsep = NULL;
 	return (cell);
 }

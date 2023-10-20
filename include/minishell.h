@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 10:54:09 by jmorvan           #+#    #+#             */
-/*   Updated: 2023/10/18 18:22:33 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:58:21 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,8 @@ typedef struct			s_pipe
 	char				*cmd;
 	struct s_pipe		*prev;
 	struct s_pipe		*next;
+	char				**cmdsep;
 }						t_pipe;
-
-//typedef	struct			s_cmdsep
-//{
-//	char				*cmd;
-//	struct s_cmdsep		*prev;
-//	struct s_cmdsep		*next;
-//	struct s_pip		*pip;
-//}						t_cmdsep;
 
 // signal.c
 int		handle_signal(t_shell *shell, int s);

@@ -6,7 +6,7 @@
 /*   By: aniezgod <aniezgod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 17:14:25 by jmorvan           #+#    #+#             */
-/*   Updated: 2023/10/18 18:22:47 by aniezgod         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:02:12 by aniezgod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int	check_quote(t_shell *shell)
 	return (0);
 }
 
+int sep_cmd(t_pipe *list)
+{
+	
+}
+
 int	parsing(t_shell *shell)
 {
 	char		**str;
@@ -53,6 +58,7 @@ int	parsing(t_shell *shell)
 		list = add_cell(list, str[i], i);
 		i++;
 	}
+	sep_cmd(list);
 	print_list(list); //a enlever
 	return (0);
 }
@@ -95,3 +101,15 @@ void	print_list(t_pipe *list)
   	i++;
   }
 }
+
+/*
+mettre dans un char** chaque commande
+arg[0] = echo
+arg[1] = -n
+arg[2] = bonjour 
+
+|
+
+char **
+arg[0] = pwd
+*/
